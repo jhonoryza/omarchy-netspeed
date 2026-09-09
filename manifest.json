@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "vm.netspeed",
+  "name": "Netspeed",
+  "version": "1.0.0",
+  "author": "jhonoryza",
+  "license": "MIT",
+  "description": "Live download/upload speed in the bar",
+  "homepage": "https://github.com/jhonoryza/omarchy-netspeed",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Netspeed",
+    "description": "Live download and upload speed (down/up arrows) sampled from interface byte counters",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshSeconds": 1,
+      "showUpload": true
+    },
+    "schema": [
+      { "key": "refreshSeconds", "type": "integer", "label": "Refresh interval (seconds)", "min": 1, "max": 5, "step": 1, "defaultValue": 1 },
+      { "key": "showUpload", "type": "boolean", "label": "Show upload speed", "defaultValue": true }
+    ]
+  }
+}
