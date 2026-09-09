@@ -108,7 +108,10 @@ BarWidget {
 
   visible: true
   implicitWidth: root.vertical ? Style.bar.statusSlot : (root.fixedRowWidth + 16)
-  implicitHeight: root.vertical ? (col.implicitHeight + 12) : Style.bar.statusSlot
+  // Full bar height like the WidgetButton-based neighbors (clock, keyboard
+  // layout, 9router): module slots stack widgets top-aligned in the bar row,
+  // so a shorter statusSlot box would float above the shared center line.
+  implicitHeight: root.vertical ? (col.implicitHeight + 12) : root.barSize
 
   IpcHandler {
     target: "vm.netspeed"
@@ -152,6 +155,8 @@ BarWidget {
 
       Text {
         width: root.iconWidth
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
         text: "󰇚"
         font.family: Style.font.family
         font.pixelSize: Style.font.bodySmall
@@ -162,6 +167,7 @@ BarWidget {
       Text {
         width: root.valueWidth
         horizontalAlignment: Text.AlignRight
+        verticalAlignment: Text.AlignVCenter
         text: root.downText
         font.family: Style.font.family
         font.pixelSize: Style.font.caption
@@ -178,7 +184,9 @@ BarWidget {
 
       Text {
         width: root.iconWidth
-        text: "󰇙"
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        text: "󰕒"
         font.family: Style.font.family
         font.pixelSize: Style.font.bodySmall
         color: Color.accent
@@ -188,6 +196,7 @@ BarWidget {
       Text {
         width: root.valueWidth
         horizontalAlignment: Text.AlignRight
+        verticalAlignment: Text.AlignVCenter
         text: root.upText
         font.family: Style.font.family
         font.pixelSize: Style.font.caption
